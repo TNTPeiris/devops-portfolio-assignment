@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps & Cloud Engineer Portfolio</title>
+    <!-- Font Awesome Icons සඳහා ලින්ක් එක -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #030712;
+            --sidebar-bg: #0b1329;
+            --card-bg: rgba(30, 41, 59, 0.4);
+            --accent-color: #38bdf8;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --success: #10b981;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Responsive Layout Grid */
+        .wrapper {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* LEFT SIDEBAR: Personal Profile Card */
+        aside {
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .profile-container {
+            margin-bottom: 2rem;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 24px; /* Creative Squircle shape */
+            border: 2px solid var(--accent-color);
+            object-fit: cover;
+            padding: 5px;
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        aside h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        aside .tagline {
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+        }
+
+        /* Creative Contact Badges */
+        .contact-list {
+            width: 100%;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .contact-box:hover {
+            border-color: var(--accent-color);
+            color: #ffffff;
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .contact-box i {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        /* RIGHT CONTENT AREA */
+        main {
+            padding: 4rem 3rem;
+            max-width: 900px;
+        }
+
+        section {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2 i {
+            color: var(--accent-color);
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Modern Grid Layout for Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .skills-grid li {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: #ffffff;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skills-grid li i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Technical Assignment Badge */
+        .pipeline-status {
+            background-color: rgba(16, 185, 129, 0.08);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            margin-top: 5rem;
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Breakpoint for Mobile Devices */
+        @media (max-width: 850px) {
+            .wrapper { grid-template-columns: 1fr; }
+            aside { height: auto; position: relative; padding: 2rem 1.5rem; }
+            main { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        
+        
+        <aside>
+            <div class="profile-container">
+              
+                <img src="nimesha.jpg" alt="Avatar" class="profile-img">
+                
+                
+                <h1>NIMESHA PEIRIS</h1>
+                <div class="tagline">DevOps & Cloud Associate</div>
+            </div>
+
+            <!-- ✉️ Contact Details Badges -->
+            <div class="contact-list">
+                
+                <a href="mailto:nimeshapeiris0513@gmail.com" class="contact-box">
+                    <i class="fa-solid fa-envelope"></i> nimeshapeiris0513@gmail.com
+                </a>
+                
+                <a href="https://github.com/TNTPeiris" target="_blank" class="contact-box">
+                    <i class="fa-brands fa-github"></i> TNTPeiris
+                </a>
+                
+            </div>
+        </aside>
+
+        
+        <main>
+            
+            <!-- About Section -->
+            <section id="about">
+                <h2><i class="fa-solid fa-user-astronaut"></i> 01. About Me</h2>
+                
+                <p>I am a passionate Information Technology undergraduate student at <strong>University of Sri Jayawardenapura</strong>, pursuing my Bachelor's degree in <strong>PHYSICAL SCIENCE ICT(PICT)</strong>. I am highly interested in modern cloud systems engineering, pipeline orchestration, and continuous deployment workflows. My primary focus lies in deploying error-free, self-healing applications inside secure server infrastructures.</p>
+            </section>
+
+            <!-- Skills Stack Section -->
+            <section id="skills">
+                <h2><i class="fa-solid fa-terminal"></i> 02. Academic Tech Stack</h2>
+                <p>Core DevOps competencies, tools, and platforms explored throughout my technical curriculum:</p>
+                
+                <ul class="skills-grid">
+                    <li><i class="fa-brands fa-git-alt"></i> Git & GitHub</li>
+                    <li><i class="fa-brands fa-docker"></i> Docker Engine</li>
+                    <li><i class="fa-solid fa-circle-nodes"></i> GitHub Actions</li>
+                    <li><i class="fa-brands fa-aws"></i> Amazon AWS (EC2)</li>
+                    <li><i class="fa-brands fa-linux"></i> Linux OS Bash</li>
+                    <li><i class="fa-solid fa-network-wired"></i> Nginx Web Server</li>
+                </ul>
+            </section>
+
+            <!-- DevOps Assignment Pipeline Section -->
+            <section id="pipeline">
+                <h2><i class="fa-solid fa-gears"></i> 03. Infrastructure Automation Workflow</h2>
+                <p>This dynamic workspace functions under a strictly automated GitOps culture. Every repository code commit triggers a localized remote builder inside GitHub Actions, executing test scripts, packaging the environment into static Docker images, and instantly flashing the production server deployed on the cloud network.</p>
+                
+                <div class="pipeline-status">
+                    <i class="fa-solid fa-circle-check"></i> CI/CD Pipeline Status: Active & Fully Automated
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 Designed for Academic Evaluation purposes.</p>
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
